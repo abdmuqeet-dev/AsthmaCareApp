@@ -60,6 +60,16 @@ GEMINI_API_KEY=YOUR_GEMINI_KEY
 ### 3. Database Initializaton
 Ensure your PostgreSQL server is running and the database `Asthma_care` exists. The application handles connection and initialization automatically via `configuration/InitDB()`.
 
+Create this table with columns:
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(150) UNIQUE,
+    created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    password VARCHAR(256)
+);
+
 ### 4. Build & Execute
 **Note**: To bypass Windows security policies (AppLocker/Application Control), always build the binary locally instead of using `go run`.
 
